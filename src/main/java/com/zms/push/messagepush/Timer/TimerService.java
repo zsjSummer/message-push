@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class TimerService {
-	@Scheduled(cron = "0/10 * * * * *")
+	@Scheduled(cron = "0 0/2 * * * ?")
 	public void print(){
 		HotSearchService hotSearchService = new HotSearchService();
 		String content = hotSearchService.hotSearch();
