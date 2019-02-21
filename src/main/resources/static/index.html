@@ -2,36 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>消息推送</title>
+	<title>消息推送-管理端</title>
+	<link href="index.css" type="text/css" rel="stylesheet">
+	<script src="index.js" language="JavaScript"></script>
 </head>
 <body>
+<h3>自定义消息推送</h3>
 <div>
 	<div>
-		<input id="title" placeholder="推送标题">
+		<input id="title" placeholder="自定义标题">
 	</div>
 	<div>
 		<input id="content" placeholder="推送内容">
 	</div>
-	<div>
-		<input id="url" placeholder="推送url">
-	</div>
-	<button id="send" onclick="sendMsg()">推送</button>
+	<button id="send" >推送</button>
 </div>
-<script>
-	function sendMsg() {
-		var content = document.querySelector("#content").value;
-		fetch('/push/' + content, {
-			method: 'GET',
-			cache: 'no-cache',
-			headers: {
-				'content-type': 'application/json'
-			}
-		}).then(function (response) {
-			return response.json();
-		}).then(function (myJson) {
-			console.log(myJson);
-		});
-	}
-</script>
 </body>
 </html>

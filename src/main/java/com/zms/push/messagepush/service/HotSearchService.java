@@ -10,24 +10,25 @@ import java.io.IOException;
 
 /**
  * @ClassName HotSearchService
- * @Description TODO
+ * @Description 微博热搜推送（只推送前5条，置顶的那条不推）
  * @Author zmszsj
  * @Date 2019/2/21 17:12
  * @Version 1.0
  **/
 @Service
 public class HotSearchService {
-	public String hotSearch(){
+	public String hotSearch() {
 		StringBuffer sb = new StringBuffer();
-		Document doc;
 		try {
-			doc = Jsoup.connect("https://s.weibo.com/top/summary?cate=realtimehot").get();
+			Document doc = Jsoup.connect("https://s.weibo.com/top/summary?cate=realtimehot").get();
 			Elements elements = doc.getElementsByClass("td-02");
 			int i = 0;
-			for(Element e : elements){
-				sb.append(e.child(0).text()+"\n");
+			for (Element e : elements) {
+				if (i != 0) {
+					sb.append(e.child(0).text() + "\n");
+				}
 				i++;
-				if(i>6) break;
+				if (i > 5) break;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
