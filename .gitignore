@@ -2,6 +2,9 @@
 mvnw
 mvnw.cmd
 
+/target/
+/src/test/
+
 # Compiled class file
 *.class
 
