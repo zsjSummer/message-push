@@ -23,7 +23,10 @@ public class RegistResource {
 	public ResultDto<RegistKeyDomain> register(@RequestParam("devicetoken") String devicetoken){
 		// 防止多线程不安全
 		synchronized (MessagePushApplication.tokens){
-			MessagePushApplication.tokens.add(devicetoken);
+			if(!MessagePushApplication.tokens.contains(devicetoken)){
+				MessagePushApplication.tokens.add(devicetoken);
+
+			}
 		}
 		//这里暂时只是将设备的token返回回去了，实际上可以像源码一样加密一个key然后返回（源码格式要求，可以用不到）
 		RegistKeyDomain registKey = new RegistKeyDomain(devicetoken);
@@ -35,12 +38,4 @@ public class RegistResource {
 		PingDomain ping = new PingDomain("1.0.0");
 		return new ResultDto<>(200,ping,"pong");
 	}
-
-	/**
-	 r.Get("/ping", http.HandlerFunc(ping))
-	 r.Post("/ping", http.HandlerFunc(ping))
-
-	 r.Get("/register", http.HandlerFunc(register))
-	 r.Post("/register", http.HandlerFunc(register))
-	 */
 }
