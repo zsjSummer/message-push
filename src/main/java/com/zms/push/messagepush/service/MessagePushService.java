@@ -26,10 +26,10 @@ import java.util.List;
  **/
 @Service
 public class MessagePushService {
-	private final int BADGE = 1; // 图标小红圈的数值
-	private final String SOUND = "default"; // 铃音
-	private final String MSG_CERTIFICATE_PASSWORD = "bp";//导出证书时设置的密码
-	private final String CERTIFICATE_PATH = "cert-20200229.p12";
+	private final int BADGE = 1;                                // 图标小红圈的数值
+	private final String SOUND = "default";                     // 铃音
+	private final String MSG_CERTIFICATE_PASSWORD = "bp";       // 导出证书时设置的密码
+	private final String CERTIFICATE_PATH = "cert-20200229.p12";// 证书名
 
 	/**
 	 * 消息推送
@@ -54,9 +54,10 @@ public class MessagePushService {
 		try {
 			// 推送相关的设置
 			PushNotificationPayload payload = new PushNotificationPayload();
-			payload.badge(BADGE);         // 小红圈
-			payload.addSound(SOUND);      // 声音
-			payload.addAlert(message);    // 消息内容
+			payload.badge(BADGE);                // 小红圈
+			payload.addSound(SOUND);             // 声音
+			payload.addCustomAlertTitle(title);  // 标题
+			payload.addCustomAlertBody(message); // 消息内容
 			// 推送服务管理
 			PushNotificationManager pushManager = new PushNotificationManager();
 			// false：表示的是产品测试推送服务 true：表示的是产品发布推送服务
