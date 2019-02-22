@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="" type="image/x-icon"/>
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+
+		.navigation {
+			width: 100%;
+			height: 50px;
+			background-color: rgba(97, 170, 255, 0.4);
+		}
+
+		.navigation div {
+			float: right;
+			margin-left: 5%;
+			height: 50px;
+			line-height: 50px;
+		}
+
+		.navigation div:hover {
+			cursor: pointer;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<div class="navigation">
+	<div class="tag" onclick="route('login')">登录</div>
+	<div class="tag" onclick="route('index')">发现</div>
+	<div class="tag" onclick="route('index')">首页</div>
+</div>
+
+<script src="custom/common/route/route-table.js"></script>
+<script src="custom/common/route/router.js"></script>
+<script>
+	var route = function (pageName) {
+		MyRouter(pageName);
+	}
+</script>
+</body>
+
+</html>

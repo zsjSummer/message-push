@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>message-push 用户登录</title>
+
+	<!-- 引入样式 -->
+	<link rel="stylesheet" type="text/css" href="../../libs/element-ui/index.css">
+	<link rel="stylesheet" type="text/css" href="./login.css">
+	<!--<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+
+		.navigation {
+			width: 100%;
+			height: 50px;
+			background-color: rgba(97, 170, 255, 0.4);
+		}
+
+		.navigation div {
+			float: right;
+			margin-left: 5%;
+			height: 50px;
+			line-height: 50px;
+		}
+
+		.navigation div:hover {
+			cursor: pointer;
+			font-weight: bold;
+		}
+	</style>-->
+</head>
+<body>
+<div id="loginPage">
+	<div class="navigation">
+		<div class="tag" onclick="route('login')">登录</div>
+		<div class="tag" onclick="route('index')">发现</div>
+		<div class="tag" onclick="route('index')">首页</div>
+	</div>
+	<div id="loginForm">
+		<el-form ref="loginForm" :model="loginForm" :label-position="formPosition">
+			<el-form-item label="" prop="account">
+				<el-input v-model="loginForm.account" placeholder="用户名"
+						  prefix-icon="edit"></el-input>
+			</el-form-item>
+			<el-form-item label="" prop="password">
+				<el-input v-model="loginForm.password" placeholder="密码" type="password"
+						  prefix-icon="edit"></el-input>
+			</el-form-item>
+			<div style="text-align: center;">
+				<el-button type="primary" @click="submit('loginForm')" icon="check">登录</el-button>
+				<el-button @click="resetForm('loginForm')" icon="close">重置</el-button>
+			</div>
+		</el-form>
+	</div>
+</div>
+
+<!-- import Jquery.js -->
+<script src="../../libs/jquery/jquery.js"></script>
+<!-- import Vue before Element -->
+<script src="../../libs/vue/vue-2.5.13.js"></script>
+<!-- import JavaScript -->
+<script src="../../libs/element-ui/index.js"></script>
+<!-- import rsa加密 -->
+<script src="../../libs/rsa/jsencrypt.js"></script>
+<!-- import 路由相关 -->
+<script src="../../custom/common/route/route-table.js"></script>
+<script src="../../custom/common/route/router.js"></script>
+<!-- import login.js -->
+<script src="./login.js"></script>
+
+</body>
+</html>

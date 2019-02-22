@@ -1,0 +1,37 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.navigation {
+	width: 100%;
+	height: 50px;
+	background-color: rgba(97, 170, 255, 0.4);
+}
+
+.navigation div {
+	float: right;
+	text-align: center;
+	width: 10%;
+	height: 50px;
+	line-height: 50px;
+}
+
+.navigation div:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#loginForm {
+	margin-top: 100px;
+	margin-right: 10%;
+	width: 30%;
+	float: right;
+	background-color: #dbdfe2;
+	border-radius: 3%;
+	padding: 1%;
+}
