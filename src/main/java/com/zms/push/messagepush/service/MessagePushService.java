@@ -10,6 +10,8 @@ import javapns.notification.AppleNotificationServerBasicImpl;
 import javapns.notification.PushNotificationManager;
 import javapns.notification.PushNotificationPayload;
 import javapns.notification.PushedNotification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ import java.util.List;
  **/
 @Service
 public class MessagePushService {
+	private static final Logger logger = LoggerFactory.getLogger(MessagePushService.class);
+
 	private final int BADGE = 1;                                // 图标小红圈的数值
 	private final String SOUND = "default";                     // 铃音
 	private final String MSG_CERTIFICATE_PASSWORD = "bp";       // 导出证书时设置的密码
@@ -73,9 +77,11 @@ public class MessagePushService {
 			List<PushedNotification> successfulNotification = PushedNotification.findSuccessfulNotifications(notifications);
 			// 关闭推送连接
 			pushManager.stopConnection();
+			logger.info("消息推送成功 成功数:{} 失败数:{}", successfulNotification.size(), failedNotification.size());
 			return new ResultDto<>(200, new PushResultDomain(devices.size(), successfulNotification.size(),
 					failedNotification.size()), "推送成功");
 		} catch (Exception e) {
+			logger.info("消息推送失败 失败原因=>{}", e.getMessage());
 			return new ResultDto<>(400, new PushResultDomain(0, 0, 0), "推送失败");
 		}
 	}

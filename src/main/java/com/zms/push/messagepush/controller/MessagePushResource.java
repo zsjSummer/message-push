@@ -4,6 +4,8 @@ import com.zms.push.messagepush.domain.MessageDomain;
 import com.zms.push.messagepush.domain.PushResultDomain;
 import com.zms.push.messagepush.dto.ResultDto;
 import com.zms.push.messagepush.service.MessagePushService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/push")
 public class MessagePushResource {
+	private static final Logger logger = LoggerFactory.getLogger(MessagePushResource.class);
+
 	@Autowired
 	private MessagePushService messagePushService;
 
@@ -29,6 +33,7 @@ public class MessagePushResource {
 	 */
 	@GetMapping("/{title}/{content}")
 	public ResultDto<PushResultDomain> push(@PathVariable("title") String title, @PathVariable("content") String content) {
+		logger.info("消息推送 接口：/push/{title}/{content} 方法名：push 【标题：{} 内容：{}】", title, content);
 		return messagePushService.push(title, content);
 	}
 
@@ -40,6 +45,7 @@ public class MessagePushResource {
 	 */
 	@GetMapping("/{content}")
 	public ResultDto<PushResultDomain> push(@PathVariable("content") String content) {
+		logger.info("消息推送 接口：/push/{content} 方法名：push 推送内容：{}", content);
 		return messagePushService.push("", content);
 	}
 
@@ -50,6 +56,7 @@ public class MessagePushResource {
 	 */
 	@PostMapping("/")
 	public ResultDto<PushResultDomain> push(@RequestBody(required = false) MessageDomain message) {
+		logger.info("消息推送 接口：/push/ 方法名：push 推送消息：{}", message);
 		return messagePushService.pushService(message);
 	}
 }
