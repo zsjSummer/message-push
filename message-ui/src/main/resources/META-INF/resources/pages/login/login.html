@@ -39,11 +39,12 @@
 <body>
 <div id="loginPage">
 	<div class="navigation">
-		<div class="tag" onclick="route('login')">登录</div>
-		<div class="tag" onclick="route('index')">发现</div>
-		<div class="tag" onclick="route('index')">首页</div>
+		<div><span class="tag" @click="route('regist')">注册</span></div>
+		<div class="tag" @click="route('index')">发现</div>
+		<div class="tag" @click="route('index')">首页</div>
 	</div>
 	<div id="loginForm">
+		<div class="loginFormTitle">用户登录</div>
 		<el-form ref="loginForm" :model="loginForm" :label-position="formPosition">
 			<el-form-item label="" prop="account">
 				<el-input v-model="loginForm.account" placeholder="用户名"

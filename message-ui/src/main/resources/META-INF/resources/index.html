@@ -23,12 +23,13 @@
 
 		.navigation div {
 			float: right;
-			margin-left: 5%;
+			text-align: center;
+			width: 10%;
 			height: 50px;
 			line-height: 50px;
 		}
 
-		.navigation div:hover {
+		.navigation .tag:hover {
 			cursor: pointer;
 			font-weight: bold;
 		}
@@ -36,7 +37,7 @@
 </head>
 <body>
 <div class="navigation">
-	<div class="tag" onclick="route('login')">登录</div>
+	<div><span class="tag" onclick="route('login')">登录</span> | <span class="tag" onclick="route('regist')">注册</span></div>
 	<div class="tag" onclick="route('index')">发现</div>
 	<div class="tag" onclick="route('index')">首页</div>
 </div>

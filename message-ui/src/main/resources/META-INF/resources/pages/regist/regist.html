@@ -3,8 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>message-push 用户注册</title>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" type="text/css" href="../../libs/element-ui/index.css">
+	<link rel="stylesheet" type="text/css" href="./regist.css">
 </head>
 <body>
+<div id="registPage">
+	<div class="navigation">
+		<div><span class="tag" @click="route('login')">登录</span></span></div>
+		<div class="tag" @click="route('index')">发现</div>
+		<div class="tag" @click="route('index')">首页</div>
+	</div>
+</div>
 
+<!-- import Jquery.js -->
+<script src="../../libs/jquery/jquery.js"></script>
+<!-- import Vue before Element -->
+<script src="../../libs/vue/vue-2.5.13.js"></script>
+<!-- import JavaScript -->
+<script src="../../libs/element-ui/index.js"></script>
+<!-- import rsa加密 -->
+<script src="../../libs/rsa/jsencrypt.js"></script>
+<!-- import 路由相关 -->
+<script src="../../custom/common/route/route-table.js"></script>
+<script src="../../custom/common/route/router.js"></script>
+<!-- import login.js -->
+<script src="./regist.js"></script>
 </body>
 </html>

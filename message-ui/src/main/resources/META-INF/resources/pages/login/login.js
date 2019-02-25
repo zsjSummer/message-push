@@ -16,6 +16,9 @@ window.onload = function () {
 			// this.obtainPublicKey();
 		},
 		methods: {
+			route: function (pageName) {
+				MyRouter(pageName);
+			},
 			/**
 			 * 登录提交账号密码
 			 * @param formName-表单名
