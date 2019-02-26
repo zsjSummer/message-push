@@ -3,17 +3,66 @@
 <head>
 	<meta charset="UTF-8">
 	<title>message-push 用户注册</title>
-	<!-- 引入样式 -->
+	<!-- import Element-Ui样式 -->
 	<link rel="stylesheet" type="text/css" href="../../libs/element-ui/index.css">
+	<!-- import 自定义样式 -->
+	<link rel="stylesheet" type="text/css" href="../common/header.css">
 	<link rel="stylesheet" type="text/css" href="./regist.css">
 </head>
 <body>
 <div id="registPage">
+	<!-- Header 导航栏 -->
 	<div class="navigation">
 		<div><span class="tag" @click="route('login')">登录</span></span></div>
 		<div class="tag" @click="route('index')">发现</div>
 		<div class="tag" @click="route('index')">首页</div>
 	</div>
+</div>
+<div><input type="text" id="title" value="title" /></div>
+<div><input type="text" id="content" value="content" /></div>
+<div><input type="text" id="cron" value="*/5 * * * * ?" /></div>
+<div><button onclick="add()">开始定时任务</button></div>
+<br>
+<br>
+<div><input type="text" id="taskId" /></div>
+<div><button onclick="stop()">停止定时任务</button></div>
+<script>
+	var add = function () {
+		var data = {
+			title : document.querySelector("#title").value,
+			content : document.querySelector("#content").value,
+			cron : document.querySelector("#cron").value,
+		};
+		console.log(data);
+		fetch('/api/myschedule/add', {
+			method: 'POST',
+			cache: 'no-cache',
+			body: JSON.stringify(data),
+			headers: {
+				'content-type': 'application/json'
+			}
+		}).then(function (response) {
+			return response.json();
+		}).then(function (myJson) {
+
+		});
+	}
+
+	var stop = function () {
+		var taskId = document.querySelector("#taskId").value;
+		fetch('/api/myschedule/stop/'+taskId, {
+			method: 'POST',
+			cache: 'no-cache',
+			headers: {
+				'content-type': 'application/json'
+			}
+		}).then(function (response) {
+			return response.json();
+		}).then(function (myJson) {
+
+		});
+	}
+</script>
 </div>
 
 <!-- import Jquery.js -->

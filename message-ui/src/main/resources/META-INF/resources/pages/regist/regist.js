@@ -2,9 +2,7 @@ window.onload = function () {
 	new Vue({
 		el: '#registPage',
 		data: function () {
-			return {
-
-			}
+			return {}
 		},
 		mounted: function () {
 		},
@@ -24,4 +22,4 @@ window.onload = function () {
 			}
 		}
 	});
-}
+};
