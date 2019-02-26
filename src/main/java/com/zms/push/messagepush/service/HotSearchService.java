@@ -21,6 +21,11 @@ import java.io.IOException;
 public class HotSearchService {
 	private static final Logger logger = LoggerFactory.getLogger(HotSearchService.class);
 
+	/**
+	 * 微博热搜抓取，返回前五条结果，未返回置定的那条
+	 *
+	 * @return
+	 */
 	public String hotSearch() {
 		StringBuffer sb = new StringBuffer();
 		try {

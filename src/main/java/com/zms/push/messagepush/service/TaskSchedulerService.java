@@ -35,23 +35,36 @@ public class TaskSchedulerService {
 	@Autowired
 	private MessagePushService messagePushService;
 
+	/**
+	 * 启动定时任务
+	 *
+	 * @param userId-用户ID
+	 * @param pushTitle-推送标题
+	 * @param pushContent-推送内容
+	 * @param cron-cron表达式
+	 */
 	public void startScheduleTask(String userId, String pushTitle, String pushContent, String cron) {
 		ScheduledFuture<?> future = threadPoolTaskScheduler.schedule(() -> {
-			messagePushService.push(pushTitle,pushContent);
-			logger.info("自定义定时任务 推送标题:{} 内容:{} cron:{}",pushTitle,pushContent,cron);
+			messagePushService.push(pushTitle, pushContent);
+			logger.info("自定义定时任务 推送标题:{} 内容:{} cron:{}", pushTitle, pushContent, cron);
 		}, new CronTrigger(cron));
 		// 先存数据库，再添加到map里
 		String taskId = UUID.randomUUID().toString();
 		scheduleMap.put(taskId, future);
-		logger.info("开始定时任务，任务ID:{} 当前总任务数:{}",taskId,scheduleMap.size());
+		logger.info("开始定时任务，任务ID:{} 当前总任务数:{}", taskId, scheduleMap.size());
 	}
 
+	/**
+	 * 停止定时任务
+	 *
+	 * @param taskId-任务的ID
+	 */
 	public void stopScheduleTask(String taskId) {
 		if (!StringUtils.isEmpty(taskId) && scheduleMap.get(taskId) != null) {
 			// 取消定时任务，从任务列表移除
 			scheduleMap.get(taskId).cancel(true);
 			scheduleMap.remove(taskId);
-			logger.info("取消定时任务，任务ID:{} 剩余定时任务数:{}",taskId,scheduleMap.size());
+			logger.info("取消定时任务，任务ID:{} 剩余定时任务数:{}", taskId, scheduleMap.size());
 		}
 	}
 }

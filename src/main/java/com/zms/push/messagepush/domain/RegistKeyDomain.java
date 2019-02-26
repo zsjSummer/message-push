@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @ClassName RegistKeyDomain
- * @Description TODO
+ * @Description 设备注册bean
  * @Author zmszsj
  * @Date 2019/2/21 14:02
  * @Version 1.0

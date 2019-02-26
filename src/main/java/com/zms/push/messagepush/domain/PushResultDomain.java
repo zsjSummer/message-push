@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @ClassName PushResultDomain
- * @Description TODO
+ * @Description 推送结果bean
  * @Author zmszsj
  * @Date 2019/2/21 15:22
  * @Version 1.0

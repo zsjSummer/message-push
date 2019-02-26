@@ -40,7 +40,7 @@ public class MessagePushResource {
 	/**
 	 * 后台推送内容
 	 *
-	 * @param content
+	 * @param content-推送内容
 	 * @return
 	 */
 	@GetMapping("/{content}")
@@ -52,7 +52,7 @@ public class MessagePushResource {
 	/**
 	 * 后台推送内容
 	 *
-	 * @param message 待推送的内容
+	 * @param message-待推送的内容
 	 */
 	@PostMapping("/")
 	public ResultDto<PushResultDomain> push(@RequestBody(required = false) MessageDomain message) {

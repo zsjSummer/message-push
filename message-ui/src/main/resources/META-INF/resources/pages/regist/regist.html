@@ -17,6 +17,28 @@
 		<div class="tag" @click="route('index')">发现</div>
 		<div class="tag" @click="route('index')">首页</div>
 	</div>
+	<!-- 注册表单 -->
+	<div id="registForm">
+		<div class="registFormTitle">用户注册</div>
+		<el-form ref="registForm" :model="registForm" :label-position="formPosition">
+			<el-form-item label="" prop="account">
+				<el-input v-model="registForm.account" placeholder="邮箱/手机号"
+						  prefix-icon="edit"></el-input>
+			</el-form-item>
+			<el-form-item label="" prop="password">
+				<el-input v-model="registForm.password" placeholder="密码" type="password"
+						  prefix-icon="edit"></el-input>
+			</el-form-item>
+			<el-form-item label="" prop="confirmPwd">
+				<el-input v-model="registForm.confirmPwd" placeholder="确认密码" type="password"
+						  prefix-icon="edit"></el-input>
+			</el-form-item>
+			<div style="text-align: center;">
+				<el-button type="primary" @click="submit('registForm')" icon="check">注册</el-button>
+				<el-button @click="resetForm('registForm')" icon="close">重置</el-button>
+			</div>
+		</el-form>
+	</div>
 </div>
 <div><input type="text" id="title" value="title" /></div>
 <div><input type="text" id="content" value="content" /></div>

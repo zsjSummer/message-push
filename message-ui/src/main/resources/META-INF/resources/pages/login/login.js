@@ -27,11 +27,11 @@ window.onload = function () {
 				var _this = this;
 				var data = _this.$refs[formName].model;
 				// RSA 加密密码
-				var encrypt = new JSEncrypt();
+				/*var encrypt = new JSEncrypt();
 				encrypt.setPublicKey(_this.publicKey);
-				data.password = encrypt.encrypt(data.password);
+				data.password = encrypt.encrypt(data.password);*/
 				// 登录请求
-				/*fetch('/api/user/login', {
+				fetch('/api/user/login', {
 					method: 'POST',
 					cache: 'no-cache',
 					body: JSON.stringify(data),
@@ -41,8 +41,13 @@ window.onload = function () {
 				}).then(function (response) {
 					return response.json();
 				}).then(function (myJson) {
-
-				});*/
+					if(myJson.code==1){
+						window.sessionStorage['userId'] = myJson.data.id;
+					}else {
+						_this.$message({type:'error',message:myJson.message});
+					}
+					console.log(myJson);
+				});
 			},
 			/**
 			 * 重置表单

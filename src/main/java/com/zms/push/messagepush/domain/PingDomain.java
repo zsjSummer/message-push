@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @ClassName PingDomain
- * @Description TODO
+ * @Description 心跳检测bean
  * @Author zmszsj
  * @Date 2019/2/21 14:10
  * @Version 1.0

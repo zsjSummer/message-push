@@ -1,0 +1,17 @@
+#registForm {
+	margin-top: 10%;
+	margin-right: 10%;
+	float: right;
+	width: 20%;
+	background-color: #dbdfe2;
+	border-radius: 3%;
+	padding: 1%;
+}
+
+.registFormTitle {
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	color: #1c8de0;
+	margin-bottom: 10px;
+}

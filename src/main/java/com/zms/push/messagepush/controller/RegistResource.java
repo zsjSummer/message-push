@@ -24,6 +24,12 @@ public class RegistResource {
 
 	private static final Logger logger = LoggerFactory.getLogger(RegistResource.class);
 
+	/**
+	 * 设备注册接口
+	 *
+	 * @param devicetoken-设备的token
+	 * @return
+	 */
 	@RequestMapping("register")
 	public ResultDto<RegistKeyDomain> register(@RequestParam("devicetoken") String devicetoken) {
 		logger.info("设备注册 接口：/register 方法名：register 设备token：{}", devicetoken);
@@ -39,6 +45,12 @@ public class RegistResource {
 		return new ResultDto<>(200, registKey, "注册成功");
 	}
 
+	/**
+	 * 心跳检测接口
+	 *
+	 * @param data-检测数据
+	 * @return
+	 */
 	@RequestMapping("ping")
 	public ResultDto<PingDomain> ping(@RequestBody(required = false) String data) {
 		logger.info("服务器检测 接口：/ping 方法名：ping");
