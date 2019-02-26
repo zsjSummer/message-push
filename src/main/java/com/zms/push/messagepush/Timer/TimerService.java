@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @ClassName TimerService
- * @Description 内置定时任务（后期修改为定时任务时间可自定义）
+ * @Description 内置定时任务（后期修改为定时任务时间可自定义,内置定时器需要用户允许才推送）
  * @Author zmszsj
  * @Date 2019/2/21 17:04
  * @Version 1.0
